@@ -14,8 +14,12 @@
   <script>
     const go = new Go();
     WebAssembly.instantiateStreaming(fetch("lib.wasm"), go.importObject).then((result) => {
-      go.run(result.instance);
+      const b = go.run(result.instance);
       console.log(result)
+      console.log(b)
+      b.then(res => {
+        console.log(res)
+      })
     });
   </script>
 </body>
