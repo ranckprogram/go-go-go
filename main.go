@@ -12,8 +12,13 @@ func main() {
 
 	// router.StaticFS("/static", http.Dir("/static"))
 	router.Static("/", "./static")
+	// router.GET("/persons", 	func(c *gin.Context) {
+  //   c.JSON(200, gin.H{
+  //     "message": "pong",
+  //   })
+  // })
 
-	router.Run(":8000")
+	// router.Run(":8000")
 	router.RunTLS(":8080", "ca/tls_cert.crt", "ca/tls_key.key")
 
 }
@@ -34,3 +39,4 @@ func TlsHandler() gin.HandlerFunc {
 			c.Next()
 	}
 }
+
