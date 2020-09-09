@@ -22,6 +22,12 @@ go build main.go
 go run main.go
 ```
 
+4. 检测
+
+```
+go vet main.go
+```
+
 
 ### wasm
 
