@@ -12,7 +12,8 @@ func foo( args []js.Value) {
 
 
 var cb = js.FuncOf(func(this js.Value, args []js.Value) interface{} {
-    fmt.Println("button clicked")
+		fmt.Println("button clicked")
+		fmt.Println(args[0])
     // cb.Release() // release the function if the button will not be clicked again
     return nil
 })

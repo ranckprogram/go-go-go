@@ -42,3 +42,7 @@ GOOS=js GOARCH=wasm go build -o lib.wasm wasm.go
 - [ ] go中调用浏览器中的方法
 
 GOOS=js GOARCH=wasm go build -o ping.wasm ping.go
+
+
+
+go build -buildmode=c-shared -o go-ping.dll go-ping.go

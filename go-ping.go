@@ -5,8 +5,7 @@ import (
     "time"
     "fmt"
     "strconv"
-		"os"
-		"syscall/js"
+    "os"
 )
 
 type PingOption struct{
@@ -25,37 +24,12 @@ func NewPingOption()*PingOption{
     }
 }
 
-
-var cb = js.FuncOf(func(this js.Value, args []js.Value) interface{} {
-	fmt.Println("kaishi ping")
-	fmt.Println(args[0])
-
-	argsmap:=map[string]interface{}{}
-	p:=NewPingOption()
-	// args[0].int()
-	// var domain int
-
-	// if s, err := strconv.Atoi(args[0]); err == nil {
-	// 	fmt.Printf("%T, %v", s, s)
-	// 	domain = s
-	// } else {
-	 	
-	// }
-
-	p.ping3(args[0].String(), argsmap)
-
-	
-	// cb.Release() // release the function if the button will not be clicked again
-	return nil
-})
-
-
-
-func main() {
-   
-		js.Global().Set("aping", cb )
-		select {}
-
+func main(){
+    //argsmap:=map[string]interface{}{}
+    //ping3("www.yeepay.com",argsmap)//10.151.30.227  不存在：67.4.3.2（现在又存在了）  公网IP：63.142.250.4（通）
+    argsmap:=map[string]interface{}{}
+     p:=NewPingOption()
+     p.ping3("www.baidu.com",argsmap)
 }
 
 //ping连接用的协议是ICMP，原理：
@@ -211,9 +185,7 @@ func checkSum3(msg []byte) uint16 {
 
 func checkError3(err error) {
     if err != nil {
-				fmt.Fprintf(os.Stderr, "Fatal error: %s", err.Error())
-				fmt.Println("神马",os.Stderr, "Fatal error: %s", err.Error())
-
+        fmt.Fprintf(os.Stderr, "Fatal error: %s", err.Error())
         os.Exit(1)
     }
 }
